@@ -13,23 +13,32 @@ echo ""
 sum=0
 
 
-for ((i=1 ; i -le $count ; i++)) do
+for (( i=1 ; i <= $count ; i++ )) 
+do
 	read -p "Enter $i number-:" num
 
-	if ( ops == "+"  ) then
-		sum = sum + num
+	if [[ "$ops" == "+"  ]] 
+	then
+		sum=$((sum + num))
 	
-	elif ( ops == "-" ) then
-		sum = sum - num
+	elif [[ "$ops" == "-" ]] 
+	then
+		sum=$((sum - num))
 	
-	elif ( ops == "*" ) then
-		sum = sum * num
+	elif [[ "$ops" == "*" ]] 
+	then
+		sum=$((sum * num))
 	
-	elif ( ops == "/" ) then
-		sum = sum / num
+	elif [[ "$ops" == "/" ]] 
+	then
+		sum=$((sum / num))
+	
 	else
-		echo "INVALID OPERSATIO"
+		echo "INVALID OPERSATION"
+		exit 1	
 	
 	fi
 done
+
+echo "$sum"
 
